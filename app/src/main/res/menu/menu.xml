@@ -4,12 +4,21 @@
     <group android:id="@+id/menugroup1" >
         <item
             android:id="@+id/menu1"
-            android:title="отмеченные точки"/>
+            android:title="режим по gps"/>
         <item
             android:id="@+id/menu2"
-            android:title="настройки"/>
+            android:title="режим по таймеру"/>
         <item
             android:id="@+id/menu3"
+            android:title="интерполяция"/>
+        <item
+            android:id="@+id/menu4"
+            android:title="отмеченные точки"/>
+        <item
+            android:id="@+id/menu5"
+            android:title="настройки"/>
+        <item
+            android:id="@+id/menu6"
             android:title="о программе">
 
         </item>

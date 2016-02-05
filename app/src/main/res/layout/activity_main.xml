@@ -4,51 +4,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kras.diplom.MainActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@drawable/top"
-    android:id="@+id/linearLayout">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@drawable/top"
+       android:id="@+id/linearLayout"
+       android:weightSum="1">
+       <ImageButton
 
-    <ImageButton
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:background="@drawable/top"
+           android:src="@drawable/menu50"
+           android:onClick="showPopupMenu"
+           android:id="@+id/buttonMenu" />
 
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/top"
-        android:src="@drawable/menu50"
-        android:onClick="showPopupMenu"
-        android:id="@+id/buttonMenu" />
-</LinearLayout>
+       <TextView
+           android:layout_width="120dp"
+           android:layout_height="50dp"
+
+           android:textAppearance="?android:attr/textAppearanceLarge"
+           android:text=""
+           android:background="@drawable/forlabel"
+           android:id="@+id/tv"
+           android:layout_centerHorizontal="true"
+           android:textAlignment="center"
+           />
+
+       <Button
+           style="?android:attr/buttonStyleSmall"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="1 сек"
+           android:id="@+id/buttontime"
+           android:onClick="showMenuTime"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentTop="true" /></RelativeLayout>
+
     <fragment
-        android:layout_marginTop="50dp"
         android:id="@+id/mapView"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout" />
 
     <Button
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="добавить точку"
         android:id="@+id/badd"
-        android:onClick="Add"
+        android:onClick="AddPoint"
         android:background="@drawable/b"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="100dp"
+    <ImageButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
-        android:background="@drawable/forlabel"
-        android:id="@+id/tv"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:autoText="false"
+        android:id="@+id/ButtonRec"
+        android:src="@drawable/rec1"
+        android:onClick="Rec"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:textAlignment="center" />
 
 
