@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+    android:title="Настройки">
+    <CheckBoxPreference
+        android:key="magn"
+        android:title="получать данные по всем осям"
+        />
+    </PreferenceCategory>
+</PreferenceScreen>
