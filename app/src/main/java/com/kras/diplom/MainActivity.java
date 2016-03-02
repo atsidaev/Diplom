@@ -402,6 +402,7 @@ public class MainActivity extends Activity {
     public int CountPointForInterpolationY(){
         Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
         Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
+
         return (int)((Math.abs(p1.getLatitude()-p2.getLatitude())*100000)/RadiusForInterpolation());
     }
 
@@ -410,8 +411,8 @@ public class MainActivity extends Activity {
         Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
         double x=Math.abs((p1.getLongitude() - p2.getLongitude())*100000);
         double y=Math.abs((p1.getLatitude()-p2.getLatitude())*100000);
-        Log.i("rx",lv.getPosition().longitude+"");
-        Log.i("ry",pn.getPosition().longitude+"");
+        Log.i("rx",x+"");
+        Log.i("ry",y+"");
         if(x>y){
             return (int)(y/20);
         }
@@ -701,10 +702,10 @@ public class MainActivity extends Activity {
 
 
 
-    public double Distanse(Point p1,Point p2){
+    public int Distanse(Point p1,Point p2){
         double l1=p1.getLatitude()-p2.getLatitude();
         double l2=p1.getLongitude()-p2.getLongitude();
-        return (Math.sqrt(l1*l1+l2*l2))*100000;
+        return (int)((Math.sqrt(l1*l1+l2*l2))*100000);
     }
 
     public void CreateDialog() {
@@ -835,22 +836,26 @@ public class MainActivity extends Activity {
     public void StartInterpolation(){
         int countPoint=CountPointForInterpolationX()*CountPointForInterpolationY();
         int countPonMap=pointOnMap.size();
-        double rr=RadiusForInterpolation()/100000;
         int r = RadiusForInterpolation();
+        double rr=((double)(r)/100000);
+
+        Log.i("radius",r+"");
+        Log.i("radius2",rr+"");
         Log.i("interpol",countPoint+"");
         Log.i("interpol",CountPointForInterpolationX()+"");
         Log.i("interpol",CountPointForInterpolationY()+"");
+
         Point pi[]=new Point[countPoint];
         pi[0]=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
         pi[countPoint-1]=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
-        int k=1;
-        for(int j=0;j<CountPointForInterpolationY()-1;j++){
-            for(int i=0;i<CountPointForInterpolationX()-1;i++){
-                pi[k]=new Point(pi[0].getLatitude()+j*rr,pi[0].getLongitude()+i*rr);
+        int k=0;
+        for(int j=0;j<CountPointForInterpolationY();j++){
+            for(int i=0;i<CountPointForInterpolationX();i++){
+                pi[k]=new Point(pi[0].getLatitude()-j*rr,pi[0].getLongitude()+i*rr);
                 double s1=0;
                 double s2=0;
                 for(int n=0;n<countPonMap;n++){
-                    int d= (int) Distanse(pointOnMap.get(n),pi[k]);
+                    int d=  Distanse(pointOnMap.get(n),pi[k]);
                     s1=pointOnMap.get(n).getMagnet()/d*d;
                     s2=1/d*d;
                 }
