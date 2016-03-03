@@ -839,19 +839,14 @@ public class MainActivity extends Activity {
         int r = RadiusForInterpolation();
         double rr=((double)(r)/100000);
 
-        Log.i("radius",r+"");
-        Log.i("radius2",rr+"");
-        Log.i("interpol",countPoint+"");
-        Log.i("interpol",CountPointForInterpolationX()+"");
-        Log.i("interpol",CountPointForInterpolationY()+"");
+
 
         Point pi[]=new Point[countPoint];
-        pi[0]=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
-        pi[countPoint-1]=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
+        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
         int k=0;
         for(int j=0;j<CountPointForInterpolationY();j++){
             for(int i=0;i<CountPointForInterpolationX();i++){
-                pi[k]=new Point(pi[0].getLatitude()-j*rr,pi[0].getLongitude()+i*rr);
+                pi[k]=new Point((p1.getLatitude()-j*rr)-rr/2,(p1.getLongitude()+i*rr)+rr/2);
                 double s1=0;
                 double s2=0;
                 for(int n=0;n<countPonMap;n++){
@@ -863,7 +858,7 @@ public class MainActivity extends Activity {
                 int m=(int)(s1/s2);
                 pi[k].setMagnet(m);
                 Log.i("interpol", k + "");
-                CircleOnMap(pi[k], r);
+                CircleOnMap(pi[k], r/2);
                 k++;
 
             }
