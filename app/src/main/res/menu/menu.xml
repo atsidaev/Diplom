@@ -26,6 +26,12 @@
             android:title="о программе">
 
         </item>
+        <item
+            android:id="@+id/menu8"
+            android:title="test">
+
+        </item>
+
     </group>
 
 

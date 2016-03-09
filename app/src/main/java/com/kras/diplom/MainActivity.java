@@ -84,7 +84,6 @@ public class MainActivity extends Activity {
     private int Sstart, Sstop;
     private int SoundStream;
     private Button buttonAdd;
-    private Button buttonTime;
     private ImageButton buttonRec;
     private TextView tv;
     private Intent intentSetting;
@@ -102,7 +101,7 @@ public class MainActivity extends Activity {
     private TimerTask mTimerTask;
     private Map<Integer, Integer> ps = new HashMap<Integer, Integer>();
     private Vector<Point> pointOnMap=new Vector<>();
-    private int time = 1000;
+
     private int t = 0;
     private Marker s,f,lv,pn;
     private Polyline pl;
@@ -111,6 +110,7 @@ public class MainActivity extends Activity {
     private GoogleMap map;
     private SharedPreferences sp;
     private Boolean b;
+    private int time = 1000;
 
 
     public GoogleMap.OnMarkerDragListener MarkerLis= new GoogleMap.OnMarkerDragListener() {
@@ -660,7 +660,7 @@ public class MainActivity extends Activity {
         buttonAdd.setVisibility(View.VISIBLE);
         tv.setVisibility(View.VISIBLE);
         buttonRec.setVisibility(View.INVISIBLE);
-        buttonTime.setVisibility(View.INVISIBLE);
+
         nameFile();
         lv.setVisible(false);
         pn.setVisible(false);
@@ -672,7 +672,6 @@ public class MainActivity extends Activity {
         buttonAdd.setVisibility(View.INVISIBLE);
         tv.setVisibility(View.VISIBLE);
         buttonRec.setVisibility(View.VISIBLE);
-        buttonTime.setVisibility(View.VISIBLE);
         pointOnMap.clear();
         if((lv!=null)&&(pn!=null)){
         lv.setVisible(false);
@@ -694,7 +693,7 @@ public class MainActivity extends Activity {
         }
         tv.setVisibility(View.INVISIBLE);
         buttonRec.setVisibility(View.INVISIBLE);
-        buttonTime.setVisibility(View.INVISIBLE);
+
         addMForGrid();
         addBorderForGrid();
 
@@ -950,6 +949,9 @@ public class MainActivity extends Activity {
                     case R.id.menu7:
                         startActivity(intentAbout);
                         return true;
+                    case R.id.menu8:
+                        startActivity(intentPoint);
+                        return true;
                     default:
                         return false;
                 }
@@ -960,7 +962,7 @@ public class MainActivity extends Activity {
         popupMenu.show();
     }
 
-    public void showMenuTime(View v) {
+   /* public void showMenuTime(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.inflate(R.menu.menutime);
 
@@ -991,6 +993,7 @@ public class MainActivity extends Activity {
 
         popupMenu.show();
     }
+*/
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void createNewSoundPool() {
@@ -1036,7 +1039,6 @@ public class MainActivity extends Activity {
         tv = (TextView) findViewById(R.id.tv);
         buttonAdd = (Button) findViewById(R.id.badd);
         buttonRec = (ImageButton) findViewById(R.id.ButtonRec);
-        buttonTime = (Button) findViewById(R.id.buttontime);
 
 
         createMapView();
@@ -1104,6 +1106,7 @@ public class MainActivity extends Activity {
         super.onResume();
         sp= PreferenceManager.getDefaultSharedPreferences(this);
         b=sp.getBoolean("magn",false);
+        time=Integer.parseInt(sp.getString("time","1"))*1000;
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             // Для устройств до Android 5
             createOldSoundPool();

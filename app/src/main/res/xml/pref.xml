@@ -6,5 +6,13 @@
         android:key="magn"
         android:title="получать данные по всем осям"
         />
+        <ListPreference
+            android:key="time"
+            android:title="частота таймера"
+            android:defaultValue="1"
+            android:entries="@array/timer"
+            android:entryValues="@array/timer"
+            android:dialogTitle="Выберите частоту записи по таймеру"
+            />
     </PreferenceCategory>
 </PreferenceScreen>
