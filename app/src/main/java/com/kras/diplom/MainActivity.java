@@ -79,6 +79,9 @@ public class MainActivity extends Activity {
     private SensorManager sensManager;
     private List<Sensor> sensors;
     public LocationManager locManager;
+    public Sensor mAccelerometerSensor;
+    public  Sensor mSensor;
+    public  Sensor magnSensor;
     private SoundPool mSound;
     private AssetManager AM;
     private int Sstart, Sstop;
@@ -90,7 +93,7 @@ public class MainActivity extends Activity {
     private Intent intentPoint;
     private Intent intentAbout;
     private NumberFormat nf;
-    public int Magnet;
+    public int Magnet,Orintation,A;
     private String filename;
     private String Text="";
     private int mode = 1;
@@ -102,6 +105,8 @@ public class MainActivity extends Activity {
     private Map<Integer, Integer> ps = new HashMap<Integer, Integer>();
     private Vector<Point> pointOnMap=new Vector<>();
 
+    private double tA=0,aA,vA;
+    private int uA;
     private int t = 0;
     private Marker s,f,lv,pn;
     private Polyline pl;
@@ -110,6 +115,7 @@ public class MainActivity extends Activity {
     private GoogleMap map;
     private SharedPreferences sp;
     private Boolean b;
+    private Point PA;
     private int time = 1000;
 
 
@@ -185,9 +191,25 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public void onSensorChanged(SensorEvent sensorEvent) {
-            Magnet = (int) sensorEvent.values[0];
-            tv.setText(String.valueOf(nf.format(sensorEvent.values[0])));
+        public void onSensorChanged(SensorEvent event) {
+            float [] values = event.values;
+            switch(event.sensor.getType()) {
+                case Sensor.TYPE_LINEAR_ACCELERATION: {
+                    aA=event.values[1];
+                }
+                break;
+                case Sensor.TYPE_ORIENTATION: {
+
+                    uA=Integer.parseInt(nf.format(event.values[0]));
+                }
+                break;
+
+                case Sensor.TYPE_MAGNETIC_FIELD: {
+                    Magnet = (int) event.values[2];
+                    tv.setText(String.valueOf(nf.format(event.values[2])));
+                }
+                break;
+            }
         }
     };
     /**
@@ -440,7 +462,7 @@ public class MainActivity extends Activity {
         mTimerTask = new TimerTask() {
             @Override
             public void run() {
-                addPoint();
+                addPointWGPS();
             }
         };
         mTimer.schedule(mTimerTask, 1, time);
@@ -452,6 +474,41 @@ public class MainActivity extends Activity {
     }
 
 
+    public void PromPforA(){
+
+        double a=aA;
+        int u=uA;
+        double s=0;
+
+        s=vA*0.01+a*0.0001/2;
+        vA=vA+a*0.01;
+        Log.i("A",s+" "+u+" "+Math.sin(u)+" "+ Math.cos(u));
+        PA=new Point(Magnet,PA.getLatitude()+s*Math.sin(u),PA.getLongitude()+s*Math.cos(u));
+        if(tA%time==0){
+            addP(PA);
+        }
+        tA=tA+0.01;
+    }
+
+
+
+    public void recWithA(){
+        nameFile();
+         tA=0;
+         vA=0;
+        PA=new Point(s.getPosition().latitude,s.getPosition().longitude);
+
+        mTimer = new Timer();
+
+        mTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                PromPforA();
+            }
+        };
+        mTimer.schedule(mTimerTask, 1, 10);
+
+    }
 
     public void handleRec() {
 
@@ -582,7 +639,75 @@ public class MainActivity extends Activity {
         pointOnMap.add(p);
     }
 
-    public void addPoint() {
+    public void addP(Point pp) {
+
+        int c;
+        int m=pp.getMagnet()/10;
+
+        switch (m){
+            case -10:c = Color.argb(10, 0, 0, 120);break;
+            case -9:c = Color.argb(50, 0, 0, 160);break;
+            case -8:c = Color.argb(50, 0, 0, 200);break;
+            case -7:c = Color.argb(50, 0, 0, 240);break;
+            case -6:c = Color.argb(50, 0, 40, 240);break;
+            case -5:c = Color.argb(50, 0, 80, 240);break;
+            case -4:c = Color.argb(50, 0, 120, 240);break;
+            case -3:c = Color.argb(50, 0, 160, 240);break;
+            case -2:c = Color.argb(50, 0, 200, 240);break;
+            case -1:c = Color.argb(50, 0, 240, 240);break;
+            case 0:c = Color.argb(50, 0, 240, 200);break;
+            case 1:c = Color.argb(50, 0, 240, 160);break;
+            case 2:c = Color.argb(50, 0, 240, 120);break;
+            case 3:c = Color.argb(50, 0, 240, 80);break;
+            case 4:c = Color.argb(50, 0, 240, 40);break;
+            case 5:c = Color.argb(50, 0, 240, 0);break;
+            case 6:c = Color.argb(50, 40, 240, 0);break;
+            case 7:c = Color.argb(50, 80, 240, 0);break;
+            case 8:c = Color.argb(50, 120, 240, 0);break;
+            case 9:c = Color.argb(50, 160, 240, 0);break;
+            case 10:c = Color.argb(50, 200, 240, 0);break;
+            case 11:c = Color.argb(50, 240, 240, 0);break;
+            case 12:c = Color.argb(50, 240, 200, 0);break;
+            case 13:c = Color.argb(50, 240, 160, 0);break;
+            case 14:c = Color.argb(50, 240, 120, 0);break;
+            case 15:c = Color.argb(50, 240, 80, 0);break;
+            case 16:c = Color.argb(50, 240, 40, 0);break;
+            case 17:c = Color.argb(50, 240, 0, 0);break;
+            case 18:c = Color.argb(50, 200, 0, 0);break;
+            case 19:c = Color.argb(50, 160, 0, 0);break;
+            case 20:c = Color.argb(50, 120, 0, 0);break;
+            default:c = Color.argb(50, 0, 0, 0);break;
+        }
+
+
+        String Point = pp.getLatitude()+" "+ pp.getLongitude()+" " +Magnet;
+
+        FileOutputStream fOut = null;
+
+
+        try {
+            fOut = openFileOutput(filename, MODE_APPEND);
+
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+            osw.write(Point);
+            osw.flush();
+            osw.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CircleOptions circleOptions = new CircleOptions()
+                .center(new LatLng(pp.getLatitude(), pp.getLongitude())).radius(1)
+                .fillColor(c).strokeColor(Color.DKGRAY)
+                .strokeWidth(0);
+        pointOnMap.add(pp);
+        map.addCircle(circleOptions);
+
+    }
+
+    public void addPointWGPS() {
         Location l = map.getMyLocation();
         int c;
         int m=Magnet/10;
@@ -891,7 +1016,7 @@ public class MainActivity extends Activity {
 
     public void AddPoint(View v) {
         switch (mode){
-            case 1: addPoint();break;
+            case 1: addPointWGPS();break;
             case 3:   StartInterpolation();break;
             default:break;
         }
@@ -1044,10 +1169,6 @@ public class MainActivity extends Activity {
         createMapView();
         map.setOnMarkerDragListener(MarkerLis);
         Mode2();
-        // addMarker();
-        //  init();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
@@ -1074,6 +1195,27 @@ public class MainActivity extends Activity {
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             return;
+        }
+        sensManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        List<Sensor> sensors = sensManager.getSensorList(Sensor.TYPE_ALL);
+        if(sensors.size() > 0)
+        {
+            for (Sensor sensor : sensors) {
+                switch(sensor.getType())
+                {
+                    case Sensor.TYPE_LINEAR_ACCELERATION:
+                        if(mAccelerometerSensor == null) mAccelerometerSensor = sensor;
+                        break;
+                    case Sensor.TYPE_ORIENTATION:
+                        if(mSensor == null) mSensor = sensor;
+                        break;
+                    case Sensor.TYPE_MAGNETIC_FIELD:
+                        if(mSensor == null) magnSensor = sensor;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         sensManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -1104,6 +1246,9 @@ public class MainActivity extends Activity {
     @Override
     public void onResume(){
         super.onResume();
+        sensManager.registerListener(listener, mAccelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensManager.registerListener(listener, mSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensManager.registerListener(listener, magnSensor, SensorManager.SENSOR_DELAY_GAME);
         sp= PreferenceManager.getDefaultSharedPreferences(this);
         b=sp.getBoolean("magn",false);
         time=Integer.parseInt(sp.getString("time","1"))*1000;
@@ -1128,12 +1273,12 @@ public class MainActivity extends Activity {
         sensManager.unregisterListener(listener);
         mSound.release();
         mSound = null;
+        sensManager.unregisterListener(listener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
