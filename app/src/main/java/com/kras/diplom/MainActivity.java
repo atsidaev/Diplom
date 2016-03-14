@@ -55,7 +55,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -72,15 +71,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
-
 public class MainActivity extends Activity {
 
     private GoogleApiClient client;
     private SensorManager sensManager;
     private List<Sensor> sensors;
     public LocationManager locManager;
-    public Sensor mAccelerometerSensor;
-    public  Sensor mSensor;
+    public Sensor stepSensor;
+    public  Sensor orintationSensor;
     public  Sensor magnSensor;
     private SoundPool mSound;
     private AssetManager AM;
@@ -93,20 +91,19 @@ public class MainActivity extends Activity {
     private Intent intentPoint;
     private Intent intentAbout;
     private NumberFormat nf;
-    public int Magnet,Orintation,A;
+    public int Magnet;
     private String filename;
     private String Text="";
     private int mode = 1;
     private int moderec = 1;
-    private boolean rec = false;
-    private boolean gps = false;
+    private boolean rec = false,gps = false,step = false;
     private Timer mTimer;
     private TimerTask mTimerTask;
     private Map<Integer, Integer> ps = new HashMap<Integer, Integer>();
     private Vector<Point> pointOnMap=new Vector<>();
 
-    private double tA=0,aA,vA;
     private int uA;
+    private double Lstep=1,colstep;
     private int t = 0;
     private Marker s,f,lv,pn;
     private Polyline pl;
@@ -141,7 +138,6 @@ public class MainActivity extends Activity {
                 addBorderForGrid();
         }}
     };
-
 
     private LocationListener locListaner = new LocationListener() {
 
@@ -186,7 +182,6 @@ public class MainActivity extends Activity {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
             if (accuracy == sensManager.SENSOR_STATUS_ACCURACY_LOW) {
-
             }
         }
 
@@ -194,8 +189,8 @@ public class MainActivity extends Activity {
         public void onSensorChanged(SensorEvent event) {
             float [] values = event.values;
             switch(event.sensor.getType()) {
-                case Sensor.TYPE_LINEAR_ACCELERATION: {
-                    aA=event.values[1];
+                case Sensor.TYPE_STEP_COUNTER: {
+                    colstep=Double.parseDouble(String.valueOf(event.values[0]));
                 }
                 break;
                 case Sensor.TYPE_ORIENTATION: {
@@ -212,10 +207,6 @@ public class MainActivity extends Activity {
             }
         }
     };
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
 
 
     private void printLocation(Location loc) {
@@ -226,7 +217,9 @@ public class MainActivity extends Activity {
         }
     }
 
-
+    public void runGPS() {
+        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+    }
 
     private void createMapView() {
         /**
@@ -286,6 +279,7 @@ public class MainActivity extends Activity {
             map.clear();
         }
     }
+
 
 
     private void addIconStart() {
@@ -400,59 +394,39 @@ public class MainActivity extends Activity {
 
     }
 
-    public void nameFile() {
-        Text="";
-        GregorianCalendar calendar = new GregorianCalendar();
-        int dd=calendar.get(Calendar.DAY_OF_MONTH);
-        int mm=calendar.get(Calendar.MONTH)+1;
-        int yy=calendar.get(Calendar.YEAR);
-        int HH=calendar.get(Calendar.HOUR);
-        int MM=calendar.get(Calendar.MINUTE);
-        int SS=calendar.get(Calendar.SECOND);
-        filename=yy+""+mm+""+dd+"_"+HH+""+MM+""+SS+".txt";
-        Log.i("filename", filename);
-    }
 
 
-    public int CountPointForInterpolationX(){
+
+    public void StartInterpolation(){
+        int countPoint=CountPointForInterpolationX()*CountPointForInterpolationY();
+        int countPonMap=pointOnMap.size();
+        int r = RadiusForInterpolation();
+        double rr=((double)(r)/100000);
+
+
+
+        Point pi[]=new Point[countPoint];
         Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
-        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
-        return (int)((Math.abs(p1.getLongitude()-p2.getLongitude())*100000)/RadiusForInterpolation());
+        int k=0;
+        for(int j=0;j<CountPointForInterpolationY();j++){
+            for(int i=0;i<CountPointForInterpolationX();i++){
+                pi[k]=new Point((p1.getLatitude()-j*rr)-rr/2,(p1.getLongitude()+i*rr)+rr/2);
+                double s1=0;
+                double s2=0;
+                for(int n=0;n<countPonMap;n++){
+                    int d=  Distanse(pointOnMap.get(n),pi[k]);
+                    s1=pointOnMap.get(n).getMagnet()/d*d;
+                    s2=1/d*d;
+                }
 
-    }
+                int m=(int)(s1/s2);
+                pi[k].setMagnet(m);
+                Log.i("interpol", k + "");
+                CircleOnMap(pi[k], r/2);
+                k++;
 
-    public int CountPointForInterpolationY(){
-        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
-        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
-
-        return (int)((Math.abs(p1.getLatitude()-p2.getLatitude())*100000)/RadiusForInterpolation());
-    }
-
-    public int RadiusForInterpolation(){
-        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
-        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
-        double x=Math.abs((p1.getLongitude() - p2.getLongitude())*100000);
-        double y=Math.abs((p1.getLatitude()-p2.getLatitude())*100000);
-        Log.i("rx",x+"");
-        Log.i("ry",y+"");
-        if(x>y){
-            return (int)(y/20);
+            }
         }
-        else{
-            return (int)(x/20);
-        }
-
-    }
-
-    public int RadiusForTimer(){
-        Point p1=new Point(s.getPosition().latitude,s.getPosition().longitude);
-        Point p2=new Point(f.getPosition().latitude,f.getPosition().longitude);
-        int d= (int)(Distanse(p1, p2)*10000);
-        return (d/ps.size());
-    }
-
-    public void runGPS() {
-        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
     }
 
 
@@ -462,7 +436,9 @@ public class MainActivity extends Activity {
         mTimerTask = new TimerTask() {
             @Override
             public void run() {
-                addPointWGPS();
+                Location l = map.getMyLocation();
+                Point p=new Point(Magnet,l.getLatitude(),l.getLongitude());
+                addPoint(p);
             }
         };
         mTimer.schedule(mTimerTask, 1, time);
@@ -474,41 +450,61 @@ public class MainActivity extends Activity {
     }
 
 
-    public void PromPforA(){
-
-        double a=aA;
-        int u=uA;
-        double s=0;
-
-        s=vA*0.01+a*0.0001/2;
-        vA=vA+a*0.01;
-        Log.i("A",s+" "+u+" "+Math.sin(u)+" "+ Math.cos(u));
-        PA=new Point(Magnet,PA.getLatitude()+s*Math.sin(u),PA.getLongitude()+s*Math.cos(u));
-        if(tA%time==0){
-            addP(PA);
+    public void recWithStep(){
+        nameFile();
+        Text="";
+        FileOutputStream fOut = null;
+        try {
+            FileOutputStream fos = new FileOutputStream(getExternalPath());
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        tA=tA+0.01;
+        pointOnMap.clear();
+        moderec=6;
+        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+        addIconStart();
     }
 
-
-
-    public void recWithA(){
-        nameFile();
-         tA=0;
-         vA=0;
-        PA=new Point(s.getPosition().latitude,s.getPosition().longitude);
-
+    public void StartRecStep(){
         mTimer = new Timer();
 
         mTimerTask = new TimerTask() {
             @Override
             public void run() {
-                PromPforA();
+                PA=new Point(Magnet,uA,colstep);
+                pointOnMap.add(PA);
             }
         };
-        mTimer.schedule(mTimerTask, 1, 10);
+        mTimer.schedule(mTimerTask, 1, time);
+        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
+        moderec=7;
 
     }
+
+    public void FinishRecStep(){
+        moderec=1;
+        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
+        int n=pointOnMap.size();
+        Point pp[]=new Point[n];
+        pp[0]=new Point(pointOnMap.get(0).getMagnet(),s.getPosition().latitude,s.getPosition().longitude);
+
+        for (int i = 1; i < n; i++) {
+
+                double s=(pointOnMap.get(i).getStep()-pointOnMap.get(i-1).getStep())*Lstep/100000;
+                pp[i] = new Point(pointOnMap.get(i).getMagnet(), (pp[i - 1].getLatitude() + s * Math.cos(pointOnMap.get(i - 1).getOrientation())), (pp[i - 1].getLongitude() + s * Math.sin(pointOnMap.get(i - 1).getOrientation())));
+        }
+
+        pointOnMap.clear();
+        for(int j=0;j<n;j++){
+            addPoint(pp[j]);
+        }
+        writeFile(Text);
+    }
+
+
 
     public void handleRec() {
 
@@ -576,17 +572,15 @@ public class MainActivity extends Activity {
 
             for(int i=1;i<=ps.size();i++){
 
-
             String recPoint = p[i].getLatitude()+" "+ p[i].getLongitude()+" "+p[i].getMagnet();
             saveText(recPoint);
             CircleOnMap(p[i],dd);
-
         }
-
 
     }else {Toast.makeText(getApplicationContext(),"запись велась недостаточно долго",Toast.LENGTH_SHORT).show();}
         writeFile(Text);
     }
+
 
 
     public void CircleOnMap(Point p,int distanse){
@@ -639,141 +633,56 @@ public class MainActivity extends Activity {
         pointOnMap.add(p);
     }
 
-    public void addP(Point pp) {
+    public void addPoint(Point pp) {
+        Log.i("Ap",pp.getLatitude()+" "+pp.getLongitude()+" "+pp.getMagnet());
 
-        int c;
-        int m=pp.getMagnet()/10;
-
-        switch (m){
-            case -10:c = Color.argb(10, 0, 0, 120);break;
-            case -9:c = Color.argb(50, 0, 0, 160);break;
-            case -8:c = Color.argb(50, 0, 0, 200);break;
-            case -7:c = Color.argb(50, 0, 0, 240);break;
-            case -6:c = Color.argb(50, 0, 40, 240);break;
-            case -5:c = Color.argb(50, 0, 80, 240);break;
-            case -4:c = Color.argb(50, 0, 120, 240);break;
-            case -3:c = Color.argb(50, 0, 160, 240);break;
-            case -2:c = Color.argb(50, 0, 200, 240);break;
-            case -1:c = Color.argb(50, 0, 240, 240);break;
-            case 0:c = Color.argb(50, 0, 240, 200);break;
-            case 1:c = Color.argb(50, 0, 240, 160);break;
-            case 2:c = Color.argb(50, 0, 240, 120);break;
-            case 3:c = Color.argb(50, 0, 240, 80);break;
-            case 4:c = Color.argb(50, 0, 240, 40);break;
-            case 5:c = Color.argb(50, 0, 240, 0);break;
-            case 6:c = Color.argb(50, 40, 240, 0);break;
-            case 7:c = Color.argb(50, 80, 240, 0);break;
-            case 8:c = Color.argb(50, 120, 240, 0);break;
-            case 9:c = Color.argb(50, 160, 240, 0);break;
-            case 10:c = Color.argb(50, 200, 240, 0);break;
-            case 11:c = Color.argb(50, 240, 240, 0);break;
-            case 12:c = Color.argb(50, 240, 200, 0);break;
-            case 13:c = Color.argb(50, 240, 160, 0);break;
-            case 14:c = Color.argb(50, 240, 120, 0);break;
-            case 15:c = Color.argb(50, 240, 80, 0);break;
-            case 16:c = Color.argb(50, 240, 40, 0);break;
-            case 17:c = Color.argb(50, 240, 0, 0);break;
-            case 18:c = Color.argb(50, 200, 0, 0);break;
-            case 19:c = Color.argb(50, 160, 0, 0);break;
-            case 20:c = Color.argb(50, 120, 0, 0);break;
-            default:c = Color.argb(50, 0, 0, 0);break;
-        }
-
-
-        String Point = pp.getLatitude()+" "+ pp.getLongitude()+" " +Magnet;
-
-        FileOutputStream fOut = null;
-
-
-        try {
-            fOut = openFileOutput(filename, MODE_APPEND);
-
-            OutputStreamWriter osw = new OutputStreamWriter(fOut);
-            osw.write(Point);
-            osw.flush();
-            osw.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        CircleOptions circleOptions = new CircleOptions()
-                .center(new LatLng(pp.getLatitude(), pp.getLongitude())).radius(1)
-                .fillColor(c).strokeColor(Color.DKGRAY)
-                .strokeWidth(0);
-        pointOnMap.add(pp);
-        map.addCircle(circleOptions);
+        String Point = pp.getLatitude()+" "+ pp.getLongitude()+" "+pp.getMagnet();
+        saveText(Point);
+        CircleOnMap(pp, 2);
 
     }
 
-    public void addPointWGPS() {
-        Location l = map.getMyLocation();
-        int c;
-        int m=Magnet/10;
+    public int Distanse(Point p1,Point p2){
+        double l1=p1.getLatitude()-p2.getLatitude();
+        double l2=p1.getLongitude()-p2.getLongitude();
+        return (int)((Math.sqrt(l1*l1+l2*l2))*100000);
+    }
 
-        switch (m){
-            case -10:c = Color.argb(10, 0, 0, 120);break;
-            case -9:c = Color.argb(50, 0, 0, 160);break;
-            case -8:c = Color.argb(50, 0, 0, 200);break;
-            case -7:c = Color.argb(50, 0, 0, 240);break;
-            case -6:c = Color.argb(50, 0, 40, 240);break;
-            case -5:c = Color.argb(50, 0, 80, 240);break;
-            case -4:c = Color.argb(50, 0, 120, 240);break;
-            case -3:c = Color.argb(50, 0, 160, 240);break;
-            case -2:c = Color.argb(50, 0, 200, 240);break;
-            case -1:c = Color.argb(50, 0, 240, 240);break;
-            case 0:c = Color.argb(50, 0, 240, 200);break;
-            case 1:c = Color.argb(50, 0, 240, 160);break;
-            case 2:c = Color.argb(50, 0, 240, 120);break;
-            case 3:c = Color.argb(50, 0, 240, 80);break;
-            case 4:c = Color.argb(50, 0, 240, 40);break;
-            case 5:c = Color.argb(50, 0, 240, 0);break;
-            case 6:c = Color.argb(50, 40, 240, 0);break;
-            case 7:c = Color.argb(50, 80, 240, 0);break;
-            case 8:c = Color.argb(50, 120, 240, 0);break;
-            case 9:c = Color.argb(50, 160, 240, 0);break;
-            case 10:c = Color.argb(50, 200, 240, 0);break;
-            case 11:c = Color.argb(50, 240, 240, 0);break;
-            case 12:c = Color.argb(50, 240, 200, 0);break;
-            case 13:c = Color.argb(50, 240, 160, 0);break;
-            case 14:c = Color.argb(50, 240, 120, 0);break;
-            case 15:c = Color.argb(50, 240, 80, 0);break;
-            case 16:c = Color.argb(50, 240, 40, 0);break;
-            case 17:c = Color.argb(50, 240, 0, 0);break;
-            case 18:c = Color.argb(50, 200, 0, 0);break;
-            case 19:c = Color.argb(50, 160, 0, 0);break;
-            case 20:c = Color.argb(50, 120, 0, 0);break;
-            default:c = Color.argb(50, 0, 0, 0);break;
+    public int CountPointForInterpolationX(){
+        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
+        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
+        return (int)((Math.abs(p1.getLongitude()-p2.getLongitude())*100000)/RadiusForInterpolation());
+
+    }
+
+    public int CountPointForInterpolationY(){
+        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
+        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
+
+        return (int)((Math.abs(p1.getLatitude()-p2.getLatitude())*100000)/RadiusForInterpolation());
+    }
+
+    public int RadiusForInterpolation(){
+        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
+        Point p2=new Point(pn.getPosition().latitude,pn.getPosition().longitude);
+        double x=Math.abs((p1.getLongitude() - p2.getLongitude()) * 100000);
+        double y=Math.abs((p1.getLatitude()-p2.getLatitude())*100000);
+        Log.i("rx", x + "");
+        Log.i("ry", y + "");
+        if(x>y){
+            return (int)(y/20);
+        }
+        else{
+            return (int)(x/20);
         }
 
+    }
 
-        String Point = l.getLatitude()+" "+ l.getLongitude()+" " +Magnet;
-
-        FileOutputStream fOut = null;
-
-
-        try {
-            fOut = openFileOutput(filename, MODE_APPEND);
-
-            OutputStreamWriter osw = new OutputStreamWriter(fOut);
-            osw.write(Point);
-            osw.flush();
-            osw.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        CircleOptions circleOptions = new CircleOptions()
-                .center(new LatLng(l.getLatitude(), l.getLongitude())).radius(1)
-                .fillColor(c).strokeColor(Color.DKGRAY)
-                .strokeWidth(0);
-        Point p=new Point(l.getLatitude(), l.getLongitude());
-        pointOnMap.add(p);
-        map.addCircle(circleOptions);
-
+    public int RadiusForTimer(){
+        Point p1=new Point(s.getPosition().latitude,s.getPosition().longitude);
+        Point p2=new Point(f.getPosition().latitude,f.getPosition().longitude);
+        int d = Distanse(p1, p2);
+        return (d/ps.size());
     }
 
 
@@ -787,8 +696,10 @@ public class MainActivity extends Activity {
         buttonRec.setVisibility(View.INVISIBLE);
 
         nameFile();
+        if((lv!=null)||(pn!=null)){
         lv.setVisible(false);
         pn.setVisible(false);
+        }
     }
 
     public void Mode2() {
@@ -826,40 +737,33 @@ public class MainActivity extends Activity {
 
 
 
-    public int Distanse(Point p1,Point p2){
-        double l1=p1.getLatitude()-p2.getLatitude();
-        double l2=p1.getLongitude()-p2.getLongitude();
-        return (int)((Math.sqrt(l1*l1+l2*l2))*100000);
-    }
 
     public void CreateDialog() {
         context = MainActivity.this;
-        String title = "У вас выключен gps";
-        String message = "продолжить с ручной привязкой";
-        String button1String = "да";
-        String button2String = "включить gps";
+        String title = "У вас выключен gps. Как продолжить";
+
 
         ad = new AlertDialog.Builder(context);
         ad.setTitle(title);  // заголовок
-        ad.setMessage(message); // сообщение
 
-        ad.setPositiveButton(button1String, new DialogInterface.OnClickListener() {
+
+        ad.setPositiveButton("по линии", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
                 handleRec();
             }
         });
-        ad.setNegativeButton(button2String, new DialogInterface.OnClickListener() {
+        ad.setNeutralButton("акселерометр", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+                recWithStep();
+            }
+        });
+        ad.setNegativeButton("gps", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
                 runGPS();
             }
         });
         ad.setCancelable(true);
-        ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            public void onCancel(DialogInterface dialog) {
-                Toast.makeText(context, "Вы ничего не выбрали",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+
         ad.show();
     }
 
@@ -957,37 +861,20 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void StartInterpolation(){
-        int countPoint=CountPointForInterpolationX()*CountPointForInterpolationY();
-        int countPonMap=pointOnMap.size();
-        int r = RadiusForInterpolation();
-        double rr=((double)(r)/100000);
-
-
-
-        Point pi[]=new Point[countPoint];
-        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
-        int k=0;
-        for(int j=0;j<CountPointForInterpolationY();j++){
-            for(int i=0;i<CountPointForInterpolationX();i++){
-                pi[k]=new Point((p1.getLatitude()-j*rr)-rr/2,(p1.getLongitude()+i*rr)+rr/2);
-                double s1=0;
-                double s2=0;
-                for(int n=0;n<countPonMap;n++){
-                    int d=  Distanse(pointOnMap.get(n),pi[k]);
-                    s1=pointOnMap.get(n).getMagnet()/d*d;
-                    s2=1/d*d;
-                }
-
-                int m=(int)(s1/s2);
-                pi[k].setMagnet(m);
-                Log.i("interpol", k + "");
-                CircleOnMap(pi[k], r/2);
-                k++;
-
-            }
-        }
+    public void nameFile() {
+        Text="";
+        GregorianCalendar calendar = new GregorianCalendar();
+        int dd=calendar.get(Calendar.DAY_OF_MONTH);
+        int mm=calendar.get(Calendar.MONTH)+1;
+        int yy=calendar.get(Calendar.YEAR);
+        int HH=calendar.get(Calendar.HOUR);
+        int MM=calendar.get(Calendar.MINUTE);
+        int SS=calendar.get(Calendar.SECOND);
+        filename=yy+""+mm+""+dd+"_"+HH+""+MM+""+SS+".txt";
+        Log.i("filename", filename);
     }
+
+
 
     public void Rec(View v) {
 
@@ -1007,6 +894,8 @@ public class MainActivity extends Activity {
                     case 3: Conf2();break;
                     case 4: StopRec();break;
                     case 5: moderec=1;break;
+                    case 6: StartRecStep();break;
+                    case 7:FinishRecStep();break;
                     default:break;
                 }
 
@@ -1016,11 +905,14 @@ public class MainActivity extends Activity {
 
     public void AddPoint(View v) {
         switch (mode){
-            case 1: addPointWGPS();break;
+            case 1: Location l = map.getMyLocation();
+                Point p=new Point(Magnet,l.getLatitude(),l.getLongitude());
+                addPoint(p);break;
             case 3:   StartInterpolation();break;
             default:break;
         }
     }
+
 
 
     public void showPopupMenu(View v) {
@@ -1086,39 +978,6 @@ public class MainActivity extends Activity {
 
         popupMenu.show();
     }
-
-   /* public void showMenuTime(View v) {
-        PopupMenu popupMenu = new PopupMenu(this, v);
-        popupMenu.inflate(R.menu.menutime);
-
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.menu1:
-                        buttonTime.setText("1 сек");
-                        time = 1000;
-                        return true;
-                    case R.id.menu2:
-                        buttonTime.setText("5 сек");
-                        time = 5000;
-                        return true;
-                    case R.id.menu3:
-                        buttonTime.setText("10 сек");
-                        time = 10000;
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-
-
-        popupMenu.show();
-    }
-*/
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void createNewSoundPool() {
@@ -1203,14 +1062,14 @@ public class MainActivity extends Activity {
             for (Sensor sensor : sensors) {
                 switch(sensor.getType())
                 {
-                    case Sensor.TYPE_LINEAR_ACCELERATION:
-                        if(mAccelerometerSensor == null) mAccelerometerSensor = sensor;
+                    case Sensor.TYPE_STEP_COUNTER:
+                        if(stepSensor == null) stepSensor = sensor;
                         break;
                     case Sensor.TYPE_ORIENTATION:
-                        if(mSensor == null) mSensor = sensor;
+                        if(orintationSensor == null) orintationSensor = sensor;
                         break;
                     case Sensor.TYPE_MAGNETIC_FIELD:
-                        if(mSensor == null) magnSensor = sensor;
+                        if(magnSensor == null) magnSensor = sensor;
                         break;
                     default:
                         break;
@@ -1246,9 +1105,9 @@ public class MainActivity extends Activity {
     @Override
     public void onResume(){
         super.onResume();
-        sensManager.registerListener(listener, mAccelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
-        sensManager.registerListener(listener, mSensor, SensorManager.SENSOR_DELAY_GAME);
-        sensManager.registerListener(listener, magnSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensManager.registerListener(listener, stepSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensManager.registerListener(listener, orintationSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensManager.registerListener(listener, magnSensor, SensorManager.SENSOR_DELAY_NORMAL);
         sp= PreferenceManager.getDefaultSharedPreferences(this);
         b=sp.getBoolean("magn",false);
         time=Integer.parseInt(sp.getString("time","1"))*1000;
@@ -1299,8 +1158,10 @@ public class MainActivity extends Activity {
 
 class Point{
     int magnet;
+    double step;
     double longitude;
     double latitude;
+    double orientation;
 
     public Point( int m, double lat , double lon ){
         magnet=m;
@@ -1313,6 +1174,13 @@ class Point{
         longitude=lon;
         latitude=lat;
 
+    }
+
+    public Point(int m, int u,double s){
+        double uA=u*3.1415/180;
+        magnet=m;
+        orientation=uA;
+        step=s;
     }
 
     public Point( int m){
@@ -1333,5 +1201,13 @@ class Point{
 
     public int getMagnet(){
         return this.magnet;
+    }
+
+    public double getStep(){
+        return this.step;
+    }
+
+    public double getOrientation() {
+        return this.orientation;
     }
 }

@@ -9,6 +9,7 @@ import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -37,7 +38,7 @@ public class PointActivity extends Activity {
             for (Sensor sensor : sensors) {
                 switch(sensor.getType())
                 {
-                    case Sensor.TYPE_LINEAR_ACCELERATION:
+                    case Sensor.TYPE_STEP_COUNTER:
                         if(mAccelerometerSensor == null) mAccelerometerSensor = sensor;
                         break;
                     case Sensor.TYPE_ORIENTATION:
@@ -51,12 +52,18 @@ public class PointActivity extends Activity {
 
 }
 
+    public void onclick(View v){
+        mAccelerometerSensor=null;
+        mAccelerometerSensor=sensManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        sensManager.registerListener(listener, mAccelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         sensManager.registerListener(listener, mAccelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
-       sensManager.registerListener(listener, mSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensManager.registerListener(listener, mSensor, SensorManager.SENSOR_DELAY_GAME);
     }
     SensorEventListener listener = new SensorEventListener() {
     @Override
@@ -68,10 +75,10 @@ public class PointActivity extends Activity {
         float [] values = event.values;
         switch(event.sensor.getType())
         {
-            case Sensor.TYPE_LINEAR_ACCELERATION:
+            case Sensor.TYPE_STEP_COUNTER:
             {
-                Log.i("y",String.valueOf(nf.format(event.values[1])));
-                tv1.setText(String.valueOf(nf.format(event.values[1])));
+               // Log.i("y",String.valueOf(nf.format(event.values[1])));
+                tv1.setText(String.valueOf(event.values[0]));
             }
             break;
             case Sensor.TYPE_ORIENTATION:{
