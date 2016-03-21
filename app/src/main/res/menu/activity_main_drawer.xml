@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/menugroup1" >
+        <item
+            android:id="@+id/menu1"
+            android:title="режим по gps"/>
+        <item
+            android:id="@+id/menu2"
+            android:title="режим по таймеру"/>
+        <item
+            android:id="@+id/menu3"
+            android:title="интерполяция"/>
+        <item
+            android:id="@+id/menu4"
+            android:title="отмеченные точки"/>
+        <item
+            android:id="@+id/menu5"
+            android:title="очистить карту"/>
+        <item
+            android:id="@+id/menu6"
+            android:title="настройки"/>
+
+        <item
+            android:id="@+id/menu7"
+            android:title="о программе">
+
+        </item>
+        <item
+            android:id="@+id/menu8"
+            android:title="test">
+
+        </item>
+
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+
+            android:title="Import" />
+        <item
+            android:id="@+id/nav_gallery"
+
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+
+            android:title="Slideshow" />
+        <item
+            android:id="@+id/nav_manage"
+
+            android:title="Tools" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

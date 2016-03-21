@@ -29,8 +29,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -71,7 +80,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleApiClient client;
     private SensorManager sensManager;
@@ -396,14 +405,17 @@ public class MainActivity extends Activity {
 
 
 
-
-    public void StartInterpolation(){
+    public void StartInterpolation1(){
+        Vector<Point> pfi=new Vector<>();
+        for(int i=0;i<pointOnMap.size();i++){
+            if((pointOnMap.get(i).getLatitude()<lv.getPosition().latitude)&&(pointOnMap.get(i).getLatitude()>pn.getPosition().latitude)&&(pointOnMap.get(i).getLongitude()>lv.getPosition().longitude)&&(pointOnMap.get(i).getLongitude()<pn.getPosition().longitude)){
+                pfi.add(pointOnMap.get(i));
+            }
+        }
         int countPoint=CountPointForInterpolationX()*CountPointForInterpolationY();
-        int countPonMap=pointOnMap.size();
+        int countPonO=pfi.size();
         int r = RadiusForInterpolation();
         double rr=((double)(r)/100000);
-
-
 
         Point pi[]=new Point[countPoint];
         Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
@@ -413,14 +425,51 @@ public class MainActivity extends Activity {
                 pi[k]=new Point((p1.getLatitude()-j*rr)-rr/2,(p1.getLongitude()+i*rr)+rr/2);
                 double s1=0;
                 double s2=0;
-                for(int n=0;n<countPonMap;n++){
-                    int d=  Distanse(pointOnMap.get(n),pi[k]);
-                    s1=pointOnMap.get(n).getMagnet()/d*d;
+                for(int n=0;n<countPonO;n++){
+                    int d=  Distanse(pfi.get(n),pi[k]);
+                    s1=pfi.get(n).getMagnet()/d*d;
                     s2=1/d*d;
                 }
 
                 int m=(int)(s1/s2);
                 pi[k].setMagnet(m);
+                Log.i("interpol", k + "");
+                CircleOnMap(pi[k], r/2);
+                k++;
+
+            }
+        }
+    }
+
+    public void StartInterpolation2(){
+        Vector<Point> pfi=new Vector<>();
+        for(int i=0;i<pointOnMap.size();i++){
+            if((pointOnMap.get(i).getLatitude()<lv.getPosition().latitude)&&(pointOnMap.get(i).getLatitude()>pn.getPosition().latitude)&&(pointOnMap.get(i).getLongitude()>lv.getPosition().longitude)&&(pointOnMap.get(i).getLongitude()<pn.getPosition().longitude)){
+                pfi.add(pointOnMap.get(i));
+            }
+        }
+        int countPoint=CountPointForInterpolationX()*CountPointForInterpolationY();
+        int countPonO=pfi.size();
+        int r = RadiusForInterpolation();
+        double rr=((double)(r)/100000);
+
+        Point pi[]=new Point[countPoint];
+        Point p1=new Point(lv.getPosition().latitude,lv.getPosition().longitude);
+        int k=0;
+        for(int j=0;j<CountPointForInterpolationY();j++){
+            for(int i=0;i<CountPointForInterpolationX();i++){
+                pi[k]=new Point((p1.getLatitude()-j*rr)-rr/2,(p1.getLongitude()+i*rr)+rr/2);
+                int[] m=new int[countPonO];
+                for(int n=0;n<countPonO;n++){
+                     m[n]=pfi.get(n).getMagnet();
+                }
+                for(int n=0;n<countPonO;n++){
+                    m[n]=pfi.get(n).getMagnet();
+                }
+
+
+           //     int mm=(int)(s1/s2);
+             //   pi[k].setMagnet(m);
                 Log.i("interpol", k + "");
                 CircleOnMap(pi[k], r/2);
                 k++;
@@ -908,7 +957,7 @@ public class MainActivity extends Activity {
             case 1: Location l = map.getMyLocation();
                 Point p=new Point(Magnet,l.getLatitude(),l.getLongitude());
                 addPoint(p);break;
-            case 3:   StartInterpolation();break;
+            case 3:   StartInterpolation1();break;
             default:break;
         }
     }
@@ -1020,6 +1069,26 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         tv = (TextView) findViewById(R.id.tv);
         buttonAdd = (Button) findViewById(R.id.badd);
         buttonRec = (ImageButton) findViewById(R.id.ButtonRec);
@@ -1133,6 +1202,7 @@ public class MainActivity extends Activity {
         mSound.release();
         mSound = null;
         sensManager.unregisterListener(listener);
+
     }
 
     @Override
@@ -1153,6 +1223,134 @@ public class MainActivity extends Activity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+/*
+    @Override
+    public void onSaveInstanceState(Bundle saveInstanceState) {
+        // получаем ссылку на текстовую метку
+        TextView myTextView = (TextView)findViewById(R.id.textView);
+        // Сохраняем его состояние
+        saveInstanceState.putString(TEXTVIEW_STATE_KEY, myTextView.getText().toString());
+
+        // Сохраняем состояние игрока
+        savedInstanceState.putInt(STATE_SCORE, mCurrentScore);
+        saveInstanceState.put();
+
+        // всегда вызывайте суперкласс для сохранения состояний видов
+        super.onSaveInstanceState(saveInstanceState);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
+        mCurrentScore = savedInstanceState.getInt(STATE_SCORE);
+    }
+    */
+@Override
+public void onBackPressed() {
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    if (drawer.isDrawerOpen(GravityCompat.START)) {
+        drawer.closeDrawer(GravityCompat.START);
+    } else {
+        openQuitDialog();
+    }
+    // TODO Auto-generated method stub
+    // super.onBackPressed();
+
+}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.menu1:
+                Mode1();
+                break;
+            case R.id.menu2:
+                Mode2();
+                break;
+            case R.id.menu3:
+                ModeGrid();
+                break;
+            case R.id.menu4:
+                OpenFileDialog();
+                break;
+            case R.id.menu5:
+                clearMap();
+                break;
+            case R.id.menu6:
+                startActivity(intentSetting);
+                break;
+            case R.id.menu7:
+                startActivity(intentAbout);
+               break;
+            case R.id.menu8:
+                startActivity(intentPoint);
+                break;
+            case R.id.nav_gallery:
+                startActivity(intentSetting);
+                break;
+            case R.id.nav_manage:
+                startActivity(intentAbout);
+               break;
+            case R.id.nav_slideshow:
+                startActivity(intentPoint);
+                break;
+            default:
+                break;
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    private void openQuitDialog() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle("Выход: Вы уверены?");
+
+        quitDialog.setPositiveButton("да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
+
+        quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                return;
+            }
+        });
+
+        quitDialog.show();
     }
 }
 
