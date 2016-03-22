@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AssetManager AM;
     private int Sstart, Sstop;
     private int SoundStream;
-    private Button buttonAdd;
-    private ImageButton buttonRec;
     private TextView tv;
     private Intent intentSetting;
     private Intent intentPoint;
@@ -151,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private LocationListener locListaner = new LocationListener() {
 
         public void onLocationChanged(Location argLocation) {
-            buttonAdd.setText("Добавить точку");
+           // buttonAdd.setText("Добавить точку");
             printLocation(argLocation);
             CameraPosition camera = new CameraPosition.Builder()
                     .target(new LatLng(argLocation.getLatitude(), argLocation.getLongitude()))
@@ -167,8 +165,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onProviderDisabled(String arg0) {
 
-            buttonAdd.setText("Включите GPS");
-            buttonAdd.setEnabled(false);
+            //buttonAdd.setText("Включите GPS");
+           // buttonAdd.setEnabled(false);
             gps = false;
             // tv.setText("disabled");
         }
@@ -176,8 +174,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onProviderEnabled(String arg0) {
 
-            buttonAdd.setText("идет поиск");
-            buttonAdd.setEnabled(false);
+           // buttonAdd.setText("идет поиск");
+            //buttonAdd.setEnabled(false);
             gps = true;
         }
 
@@ -513,7 +511,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         pointOnMap.clear();
         moderec=6;
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconStart();
     }
 
@@ -528,14 +526,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         mTimer.schedule(mTimerTask, 1, time);
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
+       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
         moderec=7;
 
     }
 
     public void FinishRecStep(){
         moderec=1;
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
+       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
         int n=pointOnMap.size();
         Point pp[]=new Point[n];
         pp[0]=new Point(pointOnMap.get(0).getMagnet(),s.getPosition().latitude,s.getPosition().longitude);
@@ -568,13 +566,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
         moderec=2;
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+        //buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconStart();
 
     }
 
     public void Conf1(){
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
+       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
         t = 0;
         moderec=3;
         s.setDraggable(false);
@@ -595,14 +593,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void Conf2(){
         mTimer.cancel();
         moderec=4;
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+        //buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconFinish();
     }
 
     public void StopRec() {
         int dd=RadiusForTimer();
-        Log.i("stop"," "+ps.size());
-        buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
+        Log.i("stop", " " + ps.size());
+       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
         moderec=5;
 
         Point p[] = new Point[ps.size()+1];
@@ -739,10 +737,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void Mode1() {
         mode = 1;
         pointOnMap.clear();
-        buttonAdd.setText("добавить точку");
-        buttonAdd.setVisibility(View.VISIBLE);
+       // buttonAdd.setText("добавить точку");
+       // buttonAdd.setVisibility(View.VISIBLE);
         tv.setVisibility(View.VISIBLE);
-        buttonRec.setVisibility(View.INVISIBLE);
+        //buttonRec.setVisibility(View.INVISIBLE);
 
         nameFile();
         if((lv!=null)||(pn!=null)){
@@ -754,9 +752,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void Mode2() {
 
         mode = 2;
-        buttonAdd.setVisibility(View.INVISIBLE);
+        //buttonAdd.setVisibility(View.INVISIBLE);
         tv.setVisibility(View.VISIBLE);
-        buttonRec.setVisibility(View.VISIBLE);
+        //buttonRec.setVisibility(View.VISIBLE);
         pointOnMap.clear();
         if((lv!=null)&&(pn!=null)){
         lv.setVisible(false);
@@ -767,17 +765,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void ModeGrid() {
         mode = 3;
 
-        buttonAdd.setVisibility(View.VISIBLE);
+       // buttonAdd.setVisibility(View.VISIBLE);
         if(pointOnMap.size()>5){
-            buttonAdd.setText("начать интерполяцию");
-            buttonAdd.setEnabled(true);
+           // buttonAdd.setText("начать интерполяцию");
+          //  buttonAdd.setEnabled(true);
         }
        else{
-            buttonAdd.setText("мало точек на карте");
-            buttonAdd.setEnabled(false);
+           // buttonAdd.setText("мало точек на карте");
+           // buttonAdd.setEnabled(false);
         }
         tv.setVisibility(View.INVISIBLE);
-        buttonRec.setVisibility(View.INVISIBLE);
+       // buttonRec.setVisibility(View.INVISIBLE);
 
         addMForGrid();
         addBorderForGrid();
@@ -925,9 +923,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    public void Rec(View v) {
+    public void Rec() {
 
-
+        switch (mode){
+            case 2:
             if (gps) {
                 if(!rec){
                     recWithGPS();
@@ -949,18 +948,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
 
 
-        }
-    }
-
-    public void AddPoint(View v) {
-        switch (mode){
-            case 1: Location l = map.getMyLocation();
+        }break;
+            case 1:Location l = map.getMyLocation();
                 Point p=new Point(Magnet,l.getLatitude(),l.getLongitude());
                 addPoint(p);break;
-            case 3:   StartInterpolation1();break;
-            default:break;
-        }
+            case 3:StartInterpolation1();break;
+            default:break;}
     }
+
 
 
 
@@ -968,26 +963,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.inflate(R.menu.menu);
-        switch (mode) {
-            case 1:
-                popupMenu.getMenu().findItem(R.id.menu1).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.menu2).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.menu3).setVisible(true);
-                break;
-            case 2:
-                popupMenu.getMenu().findItem(R.id.menu1).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.menu2).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.menu3).setVisible(true);
-                break;
-            case 3:
-                popupMenu.getMenu().findItem(R.id.menu1).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.menu2).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.menu3).setVisible(false);
-                break;
 
-            default:
-                break;
-        }
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
             @Override
@@ -1076,8 +1052,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Rec();
+              //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                      //  .setAction("Action", null).show();
             }
         });
 
@@ -1090,8 +1067,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         tv = (TextView) findViewById(R.id.tv);
-        buttonAdd = (Button) findViewById(R.id.badd);
-        buttonRec = (ImageButton) findViewById(R.id.ButtonRec);
+       // buttonAdd = (Button) findViewById(R.id.badd);
+       // buttonRec = (ImageButton) findViewById(R.id.ButtonRec);
 
 
         createMapView();
@@ -1324,9 +1301,30 @@ public void onBackPressed() {
                 break;
             default:
                 break;
-        }
+        }/*
+        switch (mode) {
+            case 1:
+                popupMenu.getMenu().findItem(R.id.menu1).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.menu2).setVisible(true);
+                popupMenu.getMenu().findItem(R.id.menu3).setVisible(true);
+                break;
+            case 2:
+                popupMenu.getMenu().findItem(R.id.menu1).setVisible(true);
+                popupMenu.getMenu().findItem(R.id.menu2).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.menu3).setVisible(true);
+                break;
+            case 3:
+                popupMenu.getMenu().findItem(R.id.menu1).setVisible(true);
+                popupMenu.getMenu().findItem(R.id.menu2).setVisible(true);
+                popupMenu.getMenu().findItem(R.id.menu3).setVisible(false);
+                break;
+
+            default:
+                break;
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
