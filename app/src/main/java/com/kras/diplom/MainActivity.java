@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int Sstart, Sstop;
     private int SoundStream;
     private TextView tv;
+    private  FloatingActionButton fab;
     private Intent intentSetting;
     private Intent intentPoint;
     private Intent intentAbout;
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         public void onLocationChanged(Location argLocation) {
            // buttonAdd.setText("Добавить точку");
+            fab.setImageResource(R.drawable.ic_plusone_tall_off_client);
             printLocation(argLocation);
             CameraPosition camera = new CameraPosition.Builder()
                     .target(new LatLng(argLocation.getLatitude(), argLocation.getLongitude()))
@@ -229,10 +231,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void createMapView() {
-        /**
-         * Catch the null pointer exception that
-         * may be thrown when initialising the map
-         */
+
         try {
             if (null == map) {
                 map = ((MapFragment) getFragmentManager().findFragmentById(
@@ -246,12 +245,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 map.getUiSettings().setZoomControlsEnabled(true);
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
                 Location loc = map.getMyLocation();
@@ -265,10 +258,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(camera);
                 map.animateCamera(cameraUpdate);
 
-                /**
-                 * If the map is still null after attempted initialisation,
-                 * show an error to the user
-                 */
                 if (null == map) {
                     Toast.makeText(getApplicationContext(),
                             "Error creating map", Toast.LENGTH_SHORT).show();
@@ -292,18 +281,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void addIconStart() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
 
-
-        /** Make sure that the map has been initialised **/
-        /** Make sure that the map has been initialised **/
         if (null != map) {
             Double l1;
             Double l2;
@@ -333,18 +313,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void addIconFinish() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
 
 
-        /** Make sure that the map has been initialised **/
-        /** Make sure that the map has been initialised **/
         if (null != map) {
             Double l1;
             Double l2;
@@ -511,7 +483,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         pointOnMap.clear();
         moderec=6;
-       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+       fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconStart();
     }
 
@@ -526,14 +498,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         mTimer.schedule(mTimerTask, 1, time);
-       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
+        fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
         moderec=7;
 
     }
 
     public void FinishRecStep(){
         moderec=1;
-       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
+       fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
         int n=pointOnMap.size();
         Point pp[]=new Point[n];
         pp[0]=new Point(pointOnMap.get(0).getMagnet(),s.getPosition().latitude,s.getPosition().longitude);
@@ -566,13 +538,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
         moderec=2;
-        //buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+        fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconStart();
 
     }
 
     public void Conf1(){
-       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
+       fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.stop));
         t = 0;
         moderec=3;
         s.setDraggable(false);
@@ -583,7 +555,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void run() {
                 t++;
                 ps.put(t, Magnet);
-               // Toast.makeText(getApplicationContext(),t+" "+Magnet+" "+ps.size(),Toast.LENGTH_SHORT).show();
                 Log.i("run", t+" "+Magnet+" "+ps.size()+" "+ps.get(t));
     }
 };
@@ -593,14 +564,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void Conf2(){
         mTimer.cancel();
         moderec=4;
-        //buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
+        fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.ok));
         addIconFinish();
     }
 
     public void StopRec() {
         int dd=RadiusForTimer();
         Log.i("stop", " " + ps.size());
-       // buttonRec.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
+       fab.setImageURI(Uri.parse("android.resource://com.kras.diplom/" + R.drawable.rec));
         moderec=5;
 
         Point p[] = new Point[ps.size()+1];
@@ -618,7 +589,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
             for(int i=1;i<=ps.size();i++){
-
             String recPoint = p[i].getLatitude()+" "+ p[i].getLongitude()+" "+p[i].getMagnet();
             saveText(recPoint);
             CircleOnMap(p[i],dd);
@@ -627,8 +597,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }else {Toast.makeText(getApplicationContext(),"запись велась недостаточно долго",Toast.LENGTH_SHORT).show();}
         writeFile(Text);
     }
-
-
 
     public void CircleOnMap(Point p,int distanse){
 
@@ -733,15 +701,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     public void Mode1() {
         mode = 1;
         pointOnMap.clear();
        // buttonAdd.setText("добавить точку");
-       // buttonAdd.setVisibility(View.VISIBLE);
         tv.setVisibility(View.VISIBLE);
-        //buttonRec.setVisibility(View.INVISIBLE);
-
         nameFile();
         if((lv!=null)||(pn!=null)){
         lv.setVisible(false);
@@ -764,8 +728,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void ModeGrid() {
         mode = 3;
-
-       // buttonAdd.setVisibility(View.VISIBLE);
         if(pointOnMap.size()>5){
            // buttonAdd.setText("начать интерполяцию");
           //  buttonAdd.setEnabled(true);
@@ -775,25 +737,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            // buttonAdd.setEnabled(false);
         }
         tv.setVisibility(View.INVISIBLE);
-       // buttonRec.setVisibility(View.INVISIBLE);
-
         addMForGrid();
         addBorderForGrid();
 
     }
 
-
-
-
     public void CreateDialog() {
         context = MainActivity.this;
         String title = "У вас выключен gps. Как продолжить";
-
-
         ad = new AlertDialog.Builder(context);
         ad.setTitle(title);  // заголовок
-
-
         ad.setPositiveButton("по линии", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
                 handleRec();
@@ -810,7 +763,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         ad.setCancelable(true);
-
         ad.show();
     }
 
@@ -818,7 +770,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         File dir=getExternalFilesDir(null);
         final String[] files =dir.list();
-
         AlertDialog.Builder  builder = new AlertDialog.Builder(this);
         builder.setTitle("Выбирите файл"); // заголовок для диалога
 
@@ -831,12 +782,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         builder.setCancelable(true);
         return builder.create();
-
     }
 
     private File getExternalPath() {
         File root=getExternalFilesDir(null);
-
         return(new File(root, filename));
     }
 
@@ -884,13 +833,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void writeFile(String text) {
-       //og.i("exist",String.valueOf(getExternalPath().exists()));
         try {
             FileOutputStream fos = new FileOutputStream(getExternalPath());
-            //   FileOutputStream fos = openFileOutput(getExternalPath(),MODE_APPEND);
-
             fos.write(text.getBytes());
-
             fos.close();
             Log.d("запись в файл", text);
         } catch (FileNotFoundException e) {
@@ -937,7 +882,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            } else {
                 switch (moderec) {
                     case 1: CreateDialog();break;
-                  //  case 1: handleRec();break;
                     case 2: Conf1();break;
                     case 3: Conf2();break;
                     case 4: StopRec();break;
@@ -958,12 +902,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
     public void showPopupMenu(View v) {
 
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.inflate(R.menu.menu);
-
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
             @Override
@@ -999,7 +941,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
-
 
         popupMenu.show();
     }
@@ -1040,15 +981,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return mSound.load(afd, 1);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1067,9 +1006,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         tv = (TextView) findViewById(R.id.tv);
-       // buttonAdd = (Button) findViewById(R.id.badd);
-       // buttonRec = (ImageButton) findViewById(R.id.ButtonRec);
-
 
         createMapView();
         map.setOnMarkerDragListener(MarkerLis);
@@ -1080,25 +1016,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onStart() {
         super.onStart();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         nf = NumberFormat.getInstance();
         nf.setMaximumFractionDigits(0);
         intentSetting = new Intent(this, Setting.class);
         intentPoint = new Intent(this, PointActivity.class);
         intentAbout = new Intent(this, AboutActivity.class);
-
         locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListaner);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         sensManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
@@ -1132,14 +1059,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
 
         }
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Main Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://com.kras.diplom/http/host/path")
@@ -1164,10 +1088,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Для новых устройств
             createNewSoundPool();
         }
-
         AM = getAssets();
-
-        // получим идентификаторы
         Sstart = loadSound("cat.ogg");
         Sstop = loadSound("chicken.ogg");
     }
@@ -1179,15 +1100,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mSound.release();
         mSound = null;
         sensManager.unregisterListener(listener);
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Main Page", // TODO: Define a title for the content shown.
@@ -1234,24 +1151,16 @@ public void onBackPressed() {
         openQuitDialog();
     }
     // TODO Auto-generated method stub
-    // super.onBackPressed();
-
 }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
