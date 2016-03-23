@@ -9,17 +9,6 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="com.example.kras.myapplication.MainActivity">
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
-
-        android:id="@+id/tv"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        />
 
 <fragment
 android:id="@+id/mapView"

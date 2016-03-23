@@ -16,6 +16,11 @@
         <item
             android:id="@+id/menu5"
             android:title="очистить карту"/>
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu6"
             android:title="настройки"/>
@@ -30,39 +35,8 @@
             android:title="test">
 
         </item>
-
     </group>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
 
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-
-                android:title="Send" />
-        </menu>
-    </item>
 
 </menu>
