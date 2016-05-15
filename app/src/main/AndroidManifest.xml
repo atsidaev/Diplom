@@ -26,7 +26,7 @@
             android:value="AIzaSyBwAp2_f8-KjHgU150zklf0pd3Tf3FDcdI" />
 
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

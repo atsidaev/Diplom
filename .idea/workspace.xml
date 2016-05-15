@@ -57,13 +57,10 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kras/diplom/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5824411">
-              <caret line="440" column="27" selection-start-line="440" selection-start-column="27" selection-end-line="440" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.24770643">
+              <caret line="1425" column="110" selection-start-line="1425" selection-start-column="110" selection-end-line="1425" selection-end-column="110" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#4396:4984" expanded="false" />
-                <element signature="class#5034:6318" expanded="false" />
-                <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -71,83 +68,136 @@
                 <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#36405#36406#0" expanded="true" />
-                <element signature="e#36476#36477#0" expanded="true" />
+                <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#44988#45031#0" expanded="false" />
+                <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
                 <element signature="class#Point#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="content_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.862069">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main_drawer.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="12" selection-start-line="3" selection-start-column="3" selection-end-line="34" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer">
             <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.896552">
-              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="nav_header_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_about.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.448276">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+            <state vertical-scroll-proportion="-12.896552">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_point.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_point.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="app_bar_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="42" />
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -2026,7 +2076,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/menuactivity.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kras/diplom/MenuActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/forlabel.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menutime.xml" />
         <option value="$PROJECT_DIR$/captures/SystemInfo_2016.02.01_17.42.16.txt" />
@@ -2043,11 +2092,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kras/diplom/MainActivity.java" />
       </list>
     </option>
@@ -2068,8 +2118,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -2116,65 +2166,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Diplom" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Diplom" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Diplom" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Diplom" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2335,13 +2326,26 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diplom" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="CB5A1Y9Z33" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="41072317efa29f6f" />
     <property name="FullScreen" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
     <property name="last_opened_file_path" value="$USER_HOME$/.android/debug.keystore" />
@@ -2551,31 +2555,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.48933902" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.48933902" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15724947" sideWeight="0.5223642" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.3544776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4135071" sideWeight="0.6455224" order="9" side_tool="false" content_ui="tabs" x="33" y="716" width="1876" height="274" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26132685" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41333333" sideWeight="0.6455224" order="9" side_tool="false" content_ui="tabs" x="33" y="716" width="1876" height="274" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26066098" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.4936034" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.4936034" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22330096" sideWeight="0.779798" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14712153" sideWeight="0.7" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22330096" sideWeight="0.22020201" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.49555555" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32889125" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14712153" sideWeight="0.3" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2599,7 +2603,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="71" />
+      <option name="time" value="78" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2613,14 +2617,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu.xml">
@@ -2639,14 +2643,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png">
@@ -2680,9 +2684,6 @@
           <caret line="123" column="33" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#4396:4984" expanded="false" />
-            <element signature="class#5034:6318" expanded="false" />
-            <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
             <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
             <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -2690,22 +2691,59 @@
             <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#36405#36406#0" expanded="true" />
-            <element signature="e#36476#36477#0" expanded="true" />
+            <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#44988#45031#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
             <element signature="class#Point#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/b.xml">
@@ -2736,9 +2774,6 @@
           <caret line="123" column="33" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#4396:4984" expanded="false" />
-            <element signature="class#5034:6318" expanded="false" />
-            <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
             <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
             <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -2746,22 +2781,59 @@
             <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#36405#36406#0" expanded="true" />
-            <element signature="e#36476#36477#0" expanded="true" />
+            <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#44988#45031#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
             <element signature="class#Point#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -2778,9 +2850,6 @@
           <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#4396:4984" expanded="false" />
-            <element signature="class#5034:6318" expanded="false" />
-            <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
             <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
             <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -2788,22 +2857,59 @@
             <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#36405#36406#0" expanded="true" />
-            <element signature="e#36476#36477#0" expanded="true" />
+            <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#44988#45031#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
             <element signature="class#Point#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -2820,9 +2926,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#4396:4984" expanded="false" />
-            <element signature="class#5034:6318" expanded="false" />
-            <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
             <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
             <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -2830,22 +2933,59 @@
             <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#36405#36406#0" expanded="true" />
-            <element signature="e#36476#36477#0" expanded="true" />
+            <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#44988#45031#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
             <element signature="class#Point#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png">
@@ -2867,17 +3007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34871796">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2939,9 +3068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2982,14 +3108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4473684">
@@ -2998,89 +3116,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_point.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73443455">
-          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="12" selection-start-line="3" selection-start-column="3" selection-end-line="34" selection-end-column="12" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.896552">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.7408257">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_point.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.448276">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="42" />
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.862069">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="-12.896552">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kras/diplom/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5824411">
-          <caret line="440" column="27" selection-start-line="440" selection-start-column="27" selection-end-line="440" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.24770643">
+          <caret line="1425" column="110" selection-start-line="1425" selection-start-column="110" selection-end-line="1425" selection-end-column="110" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#4396:4984" expanded="false" />
-            <element signature="class#5034:6318" expanded="false" />
-            <element signature="method#printLocation#0;class#MainActivity#0" expanded="false" />
             <element signature="method#createMapView#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clearMap#0;class#MainActivity#0" expanded="false" />
             <element signature="method#MarkerOnMap#0;class#MainActivity#0" expanded="false" />
@@ -3088,8 +3222,45 @@
             <element signature="method#addIconFinish#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addMForGrid#0;class#MainActivity#0" expanded="false" />
             <element signature="method#addBorderForGrid#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#36405#36406#0" expanded="true" />
-            <element signature="e#36476#36477#0" expanded="true" />
+            <element signature="method#StartInterpolation2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRecWithGps#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#recWithStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StartRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#FinishRecStep#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#handleRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Conf2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#StopRec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#addPoint#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Distanse#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode1#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Mode2#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#CreateDialogForReadFiles#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getExternalPath#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#OpenFileDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#readFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#saveText#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#nameFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Rec#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#createNewSoundPool#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#playSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadSound#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#44988#45031#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#openQuitDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#Interpolation#0;class#MainActivity#0" expanded="false" />
             <element signature="class#Point#0" expanded="false" />
           </folding>
         </state>

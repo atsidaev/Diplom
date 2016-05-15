@@ -10,6 +10,7 @@
     tools:context="com.example.kras.myapplication.MainActivity">
 
 
+
 <fragment
 android:id="@+id/mapView"
 android:name="com.google.android.gms.maps.MapFragment"
