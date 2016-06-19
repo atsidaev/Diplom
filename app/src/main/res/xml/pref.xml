@@ -14,5 +14,13 @@
             android:entryValues="@array/timer"
             android:dialogTitle="Выберите частоту записи по таймеру"
             />
+        <ListPreference
+            android:key="step"
+            android:title="длина шага"
+            android:defaultValue="1"
+            android:entries="@array/steps"
+            android:entryValues="@array/steps"
+            android:dialogTitle="Выберите длину шага"
+            />
     </PreferenceCategory>
 </PreferenceScreen>
